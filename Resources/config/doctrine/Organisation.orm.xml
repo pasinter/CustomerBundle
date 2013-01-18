@@ -5,8 +5,8 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                   http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <entity name="Organisation" table="customer__organisation"
-            repository-class="OrganisationRepository">
+    <entity name="Pasinter\CustomerBundle\Entity\Organisation" table="customer__organisation"
+            repository-class="Pasinter\CustomerBundle\Repository\OrganisationRepository">
         <id name="id" column="id" type="integer">
             <generator strategy="AUTO" />
         </id>
