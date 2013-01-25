@@ -7,32 +7,46 @@ class Organisation
     /**
      * @var boolean
      */
-    private $active;
+    protected $active;
 
     /**
      * @var string
      */
-    private $name;
+    protected $name;
 
     /**
      * @var string
      */
-    private $registrationNo;
+    protected $registrationNo;
 
     /**
      * @var \DateTime
      */
-    private $createdAt;
+    protected $createdAt;
 
     /**
      * @var \DateTime
      */
-    private $updatedAt;
+    protected $updatedAt;
 
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
+    
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    protected $addresses;
+    
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->addresses = new \Doctrine\Common\Collections\ArrayCollection();
+    }
 
 
     /**
@@ -158,5 +172,39 @@ class Organisation
     public function getId()
     {
         return $this->id;
+    }
+    
+
+    /**
+     * Add addresses
+     *
+     * @param \Pasinter\GeoBundle\Entity\Address $addresses
+     * @return Organisation
+     */
+    public function addAddresse(\Pasinter\GeoBundle\Entity\Address $addresses)
+    {
+        $this->addresses[] = $addresses;
+    
+        return $this;
+    }
+
+    /**
+     * Remove addresses
+     *
+     * @param \Pasinter\GeoBundle\Entity\Address $addresses
+     */
+    public function removeAddresse(\Pasinter\GeoBundle\Entity\Address $addresses)
+    {
+        $this->addresses->removeElement($addresses);
+    }
+
+    /**
+     * Get addresses
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getAddresses()
+    {
+        return $this->addresses;
     }
 }

@@ -16,6 +16,17 @@
         <field name="firstName" column="first_name" type="string" nullable="true" />
         <field name="lastName" column="last_name" type="string" nullable="true" />
         
+        <many-to-many field="addresses" target-entity="Pasinter\GeoBundle\Entity\Address">
+            <join-table name="customer__customer_addresses">
+                <join-columns>
+                    <join-column name="customer_id" referenced-column-name="id" />
+                </join-columns>
+                <inverse-join-columns>
+                    <join-column name="address_id" referenced-column-name="id" />
+                </inverse-join-columns>
+            </join-table>
+        </many-to-many>
+        
         <field name="createdAt" column="created_at" type="datetime">
             <gedmo:timestampable on="create"/>
         </field>
